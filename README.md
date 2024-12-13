@@ -1,10 +1,10 @@
-# NUM Dashboard Report
+# Dashboard Report DSF plugin
 
 In this repository you will find the process to send reports of current FHIR store implementation progress of DICs to a HRP.
 
 ## License
 
-This project is released under the terms of [GPL version 3](LICENSE.md).
+This project is released under the terms of [GPL version 3](https://github.com/medizininformatik-initiative/dsf-plugin-numdashboard#GPL-3.0-1-ov-file).
 
 ```
 This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ## Documentation
 
-The documentation of the process including the description, the deployment and configuration guides as well as instructions on how to start a process instance can be found in the [wiki](https://github.com/medizininformatik-initiative/NUM-Dashboard-Report/wiki).
+The documentation of the process including the description, the deployment and configuration guides as well as instructions on how to start a process instance can be found in the [wiki](https://github.com/medizininformatik-initiative/dsf-plugin-numdashboard/wiki).
 
 ## Build
 
