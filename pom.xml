@@ -13,24 +13,23 @@
 		<compileSource>17</compileSource>
 		<compileTarget>17</compileTarget>
 
-		<dsf.version>1.5.2</dsf.version>
-		<testSetup.location>../mii-processes-test-setup</testSetup.location>
+		<dsf.version>1.6.0</dsf.version>
 	</properties>
 
-	<name>mii-process-reportdashboard</name>
-	<description>Process to send reports of current FHIR store implementation progress of DIC to a HRP</description>
-	<url>https://github.com/medizininformatik-initiative/mii-process-reportdashboard</url>
+	<name>num-process-dashboard-report</name>
+	<description>Process to send reports of DDP data from DIC to a HRP</description>
+	<url>https://github.com/medizininformatik-initiative/dsf-plugin-numdashboard</url>
 
 	<scm>
-		<connection>scm:git:git://github.com/medizininformatik-initiative/mii-process-reportdashboard.git</connection>
-		<developerConnection>scm:git:git@github.com/medizininformatik-initiative/mii-process-reportdashboard.git</developerConnection>
-		<url>https://github.com/medizininformatik-initiative/mii-process-reportdashboard</url>
+		<connection>scm:git:git://github.com/medizininformatik-initiative/dsf-plugin-numdashboard.git</connection>
+		<developerConnection>scm:git:git@github.com/medizininformatik-initiative/dsf-plugin-numdashboard.git</developerConnection>
+		<url>https://github.com/medizininformatik-initiative/dsf-plugin-numdashboard</url>
 	</scm>
 
 	<licenses>
 		<license>
-			<name>Apache License, Version 2.0</name>
-			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<name>GPL-3.0 license</name>
+			<url>https://github.com/medizininformatik-initiative/dsf-plugin-numdashboard#GPL-3.0-1-ov-file</url>
 			<distribution>manual</distribution>
 		</license>
 	</licenses>
