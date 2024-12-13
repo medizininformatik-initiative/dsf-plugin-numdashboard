@@ -1,0 +1,49 @@
+<CodeSystem xmlns="http://hl7.org/fhir">
+	<meta>
+		<tag>
+			<system value="http://dsf.dev/fhir/CodeSystem/read-access-tag" />
+			<code value="ALL" />
+		</tag>
+	</meta>
+	<url value="http://netzwerk-universitaetsmedizin.de/fhir/CodeSystem/report" />
+	<!-- version managed by bpe -->
+	<version value="#{version}" />
+	<name value="NUM_Dashboard_Report" />
+	<title value="NUM Dashboard Report" />
+	<!-- status managed by bpe -->
+	<status value="unknown" />
+	<experimental value="false" />
+	<!-- date managed by bpe -->
+	<date value="#{date}" />
+	<publisher value="Netzwerk-Universitaetsmedizin" />
+	<description value="CodeSystem with standard values for the report process" />
+	<caseSensitive value="true" />
+	<hierarchyMeaning value="grouped-by" />
+	<versionNeeded value="false" />
+	<content value="complete" />
+	<concept>
+		<code value="report-status" />
+		<display value="Report Status" />
+		<definition value="Report status of local organization" />
+	</concept>
+	<concept>
+		<code value="search-bundle-response-reference" />
+		<display value="Search Bundle Response Reference" />
+		<definition value="Reference to a response search Bundle containing the report" />
+	</concept>
+	<concept>
+		<code value="timer-interval" />
+		<display value="Timer Interval" />
+		<definition value="Interval between two autostart of the report process" />
+	</concept>
+	<concept>
+		<code value="first-execution" />
+		<display value="First Execution" />
+		<definition value="First time execution of send process at given time" />
+	</concept>
+	<concept>
+		<code value="hrp-identifier" />
+		<display value="HRP Identifier" />
+		<definition value="Identifier of the HRP where the report should be sent" />
+	</concept>
+</CodeSystem> 

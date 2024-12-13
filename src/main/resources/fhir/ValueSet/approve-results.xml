@@ -1,0 +1,38 @@
+<ValueSet xmlns="http://hl7.org/fhir">
+    <meta>
+        <tag>
+            <system value="http://dsf.dev/fhir/CodeSystem/read-access-tag" />
+            <code value="ALL" />
+        </tag>
+    </meta>
+    <url value="http://ukbonn.de/fhir/ValueSet/approve-results"/>
+    <!-- version managed by bpe -->
+    <version value="#{version}" />
+    <name value="Approve Result"/>
+    <title value="Approve Result ValueSet"/>
+    <!-- status managed by bpe -->
+    <status value="unknown" />
+    <experimental value="false"/>
+    <!-- date managed by bpe -->
+    <date value="#{date}"/>
+    <publisher value="UKB"/>
+    <description value="ValueSet with values for approve results."/>
+    <immutable value="true"/>
+    <compose>
+        <include>
+            <system value="http://dsf.dev/fhir/CodeSystem/approve-process"/>
+            <concept>
+                <code value="yes"/>
+            </concept>
+            <concept>
+                <code value="no"/>
+            </concept>
+            <concept>
+                <code value="timeout"/>
+            </concept>
+            <concept>
+                <code value="result-bundle"/>
+            </concept>
+        </include>
+    </compose>
+</ValueSet>
