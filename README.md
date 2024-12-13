@@ -25,9 +25,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 The documentation of the process including the description, the deployment and configuration guides as well as instructions on how to start a process instance can be found in the [wiki](https://github.com/medizininformatik-initiative/NUM-Dashboard-Report/wiki).
 
-## Development
-Branching follows the git-flow model, for the latest development version see branch [develop](https://github.com/medizininformatik-initiative/NUM-Dashboard-Report/tree/develop).
-
 ## Build
 
 Prerequisite: Java 17, Maven >= 3.6
@@ -43,6 +40,3 @@ To use this repository in your code, add the Github Package Registry server to y
     </server>
 </servers>
 ```
-
-## License
-All code is published under the [Apache-2.0 License](LICENSE).
