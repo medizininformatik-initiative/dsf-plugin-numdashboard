@@ -62,17 +62,17 @@ public class ReportConfig
 	private String ddpUsername;
 	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.ddp.password:#{null}}")
 	private String ddpPassword;
-	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.ddp.approval:#{false}}")
+	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.ddp.approval:false}")
 	private String ddpApproval;
-	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.ddp.timeout:#{PT4H}}")
+	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.ddp.timeout:PT4H}")
 	private String ddpTimeout;
-	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend:#{TEST}}")
+	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend:TEST}")
 	private String dashboardBackend;
-	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend.url.produktiv:#{https://numdashboard.ukbonn.de}}")
+	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend.url.produktiv:https://numdashboard.ukbonn.de}")
 	private String dashboardBackendUrlProduktiv;
-	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend.url.test:#{https://numdashboard-test.ukbonn.de}}")
+	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend.url.test:https://numdashboard-test.ukbonn.de}")
 	private String dashboardBackendUrlTest;
-	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend.url.development:#{https://numdashboard-dev.ukbonn.de}}")
+	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend.url.development:https://numdashboard-dev.ukbonn.de}")
 	private String dashboardBackendUrlDevelopment;
 
 	// all Processes
@@ -243,5 +243,13 @@ public class ReportConfig
 	public SendEMailDataNotDeliveredTimeoutDDP sendEMailDataNotDeliveredTimeoutDDP()
 	{
 		return new SendEMailDataNotDeliveredTimeoutDDP(api);
+	}
+
+	@Bean
+	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public ReportBackend reportBackend()
+	{
+		return new ReportBackend(dashboardBackendUrlProduktiv, dashboardBackendUrlTest, dashboardBackendUrlDevelopment,
+				dashboardBackend);
 	}
 }
