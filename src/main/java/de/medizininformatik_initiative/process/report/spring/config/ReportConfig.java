@@ -37,6 +37,7 @@ import de.medizininformatik_initiative.process.report.message.SendReceipt;
 import de.medizininformatik_initiative.process.report.message.SendReport;
 import de.medizininformatik_initiative.process.report.message.StartSendReport;
 import de.medizininformatik_initiative.process.report.service.*;
+import de.medizininformatik_initiative.process.report.util.ReportBackend;
 import de.medizininformatik_initiative.process.report.util.ReportStatusGenerator;
 import dev.dsf.bpe.v1.ProcessPluginApi;
 import dev.dsf.bpe.v1.documentation.ProcessDocumentation;
@@ -44,7 +45,6 @@ import dev.dsf.bpe.v1.documentation.ProcessDocumentation;
 @Configuration
 public class ReportConfig
 {
-
 	private static final Logger logger = LoggerFactory.getLogger(ReportConfig.class);
 
 	@Autowired
@@ -62,12 +62,18 @@ public class ReportConfig
 	private String ddpUsername;
 	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.ddp.password:#{null}}")
 	private String ddpPassword;
-	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.ddp.approval:#{null}}")
+	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.ddp.approval:#{false}}")
 	private String ddpApproval;
-	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.ddp.timeout:#{null}}")
+	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.ddp.timeout:#{PT4H}}")
 	private String ddpTimeout;
-	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend.url:#{null}}")
-	private String dashboardBackendUrl;
+	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend:#{TEST}}")
+	private String dashboardBackend;
+	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend.url.produktiv:#{https://numdashboard.ukbonn.de}}")
+	private String dashboardBackendUrlProduktiv;
+	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend.url.test:#{https://numdashboard-test.ukbonn.de}}")
+	private String dashboardBackendUrlTest;
+	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend.url.development:#{https://numdashboard-dev.ukbonn.de}}")
+	private String dashboardBackendUrlDevelopment;
 
 	// all Processes
 
@@ -138,7 +144,9 @@ public class ReportConfig
 	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public InsertReport insertReport()
 	{
-		return new InsertReport(api, reportStatusGenerator(), dashboardBackendUrl);
+		ReportBackend reportBackend = new ReportBackend(dashboardBackendUrlProduktiv, dashboardBackendUrlTest,
+				dashboardBackendUrlDevelopment, dashboardBackend);
+		return new InsertReport(api, reportStatusGenerator(), reportBackend);
 	}
 
 	@Bean

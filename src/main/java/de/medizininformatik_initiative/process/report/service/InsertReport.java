@@ -26,7 +26,6 @@ import org.hl7.fhir.r4.model.Binary;
 import org.hl7.fhir.r4.model.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -35,6 +34,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import de.medizininformatik_initiative.process.report.ConstantsReport;
+import de.medizininformatik_initiative.process.report.util.ReportBackend;
 import de.medizininformatik_initiative.process.report.util.ReportStatusGenerator;
 import dev.dsf.bpe.v1.ProcessPluginApi;
 import dev.dsf.bpe.v1.activity.AbstractServiceDelegate;
@@ -46,13 +46,13 @@ public class InsertReport extends AbstractServiceDelegate
 	private static final Logger logger = LoggerFactory.getLogger(InsertReport.class);
 
 	private final ReportStatusGenerator statusGenerator;
-	private final String dashboardBackendUrl;
+	private final ReportBackend reportBackend;
 
-	public InsertReport(ProcessPluginApi api, ReportStatusGenerator statusGenerator, String dashboardBackendUrl)
+	public InsertReport(ProcessPluginApi api, ReportStatusGenerator statusGenerator, ReportBackend reportBackend)
 	{
 		super(api);
 		this.statusGenerator = statusGenerator;
-		this.dashboardBackendUrl = dashboardBackendUrl;
+		this.reportBackend = reportBackend;
 	}
 
 	@Override
@@ -118,7 +118,8 @@ public class InsertReport extends AbstractServiceDelegate
 		HttpEntity<String> entity = new HttpEntity<>(decodedString, headers);
 		// Send the request using exchange to include headers and request body, and get the response
 		ResponseEntity<String> response = restTemplate.exchange(
-				this.dashboardBackendUrl + "/internal/" + organization + "/put", HttpMethod.PUT, entity, String.class);
+				reportBackend.getActiveURL() + "/internal/" + organization + "/put", HttpMethod.PUT, entity,
+				String.class);
 
 		return response.getBody();
 	}
