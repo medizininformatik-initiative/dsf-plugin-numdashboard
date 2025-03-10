@@ -25,6 +25,7 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.hl7.fhir.r4.model.*;
 
 import de.medizininformatik_initiative.process.report.ConstantsReport;
+import de.medizininformatik_initiative.process.report.util.ReportBackend;
 import de.medizininformatik_initiative.process.report.util.ReportStatusGenerator;
 import de.medizininformatik_initiative.processes.common.util.ConstantsBase;
 import dev.dsf.bpe.v1.ProcessPluginApi;
@@ -37,11 +38,13 @@ import jakarta.ws.rs.core.Response;
 public class SendReport extends AbstractTaskMessageSend
 {
 	private final ReportStatusGenerator statusGenerator;
+	private final ReportBackend reportBackend;
 
-	public SendReport(ProcessPluginApi api, ReportStatusGenerator statusGenerator)
+	public SendReport(ProcessPluginApi api, ReportStatusGenerator statusGenerator, ReportBackend reportBackend)
 	{
 		super(api);
 		this.statusGenerator = statusGenerator;
+		this.reportBackend = reportBackend;
 	}
 
 	@Override
@@ -57,7 +60,9 @@ public class SendReport extends AbstractTaskMessageSend
 	{
 		String ddpBinaryUrl = variables
 				.getString(ConstantsReport.BPMN_EXECUTION_VARIABLE_DASHBOARD_REPORT_DDP_JSON_RESPONSE_REFERENCE);
-
+		// String ddpBackendType = variables
+		// .getString(ConstantsReport.CODESYSTEM_BACKEND_TYPE_VALUE_TYPE);
+		String ddpBackendType = variables.getString(reportBackend.getType());
 		// update this binary resource if approval was required to allow access
 		if (variables.getBoolean(ConstantsReport.BPMN_EXECUTION_VARIABLE_DASHBOARD_REPORT_DDP_APPROVAL))
 		{
@@ -76,7 +81,11 @@ public class SendReport extends AbstractTaskMessageSend
 				.setCode(ConstantsReport.CODESYSTEM_REPORT_VALUE_SEARCH_BUNDLE_RESPONSE_REFERENCE);
 		parameterComponent.setValue(new Reference(ddpBinaryUrl).setType(ResourceType.Binary.name()));
 
-		return Stream.of(parameterComponent);
+		Task.ParameterComponent parameterComponent2 = new Task.ParameterComponent();
+		parameterComponent2.getType().addCoding().setSystem(ConstantsReport.CODESYSTEM_BACKEND_TYPE)
+				.setCode(reportBackend.getActiveURL(ddpBackendType));
+
+		return Stream.of(parameterComponent, parameterComponent2);
 	}
 
 	@Override

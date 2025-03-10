@@ -66,7 +66,7 @@ public class ReportConfig
 	private String ddpApproval;
 	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.ddp.timeout:PT4H}")
 	private String ddpTimeout;
-	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend:TEST}")
+	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend.type:TEST}")
 	private String dashboardBackend;
 	@Value("${de.netzwerk.universitaetsmedizin.dashboard.report.backend.url.produktiv:https://numdashboard.ukbonn.de}")
 	private String dashboardBackendUrlProduktiv;
@@ -121,7 +121,7 @@ public class ReportConfig
 	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public SendReport sendReport()
 	{
-		return new SendReport(api, reportStatusGenerator());
+		return new SendReport(api, reportStatusGenerator(), reportBackend());
 	}
 
 	@Bean
@@ -144,9 +144,7 @@ public class ReportConfig
 	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public InsertReport insertReport()
 	{
-		ReportBackend reportBackend = new ReportBackend(dashboardBackendUrlProduktiv, dashboardBackendUrlTest,
-				dashboardBackendUrlDevelopment, dashboardBackend);
-		return new InsertReport(api, reportStatusGenerator(), reportBackend);
+		return new InsertReport(api, reportStatusGenerator(), reportBackend());
 	}
 
 	@Bean

@@ -1,0 +1,39 @@
+<CodeSystem xmlns="http://hl7.org/fhir">
+	<meta>
+		<tag>
+			<system value="http://dsf.dev/fhir/CodeSystem/read-access-tag" />
+			<code value="ALL" />
+		</tag>
+	</meta>
+	<url value="http://netzwerk-universitaetsmedizin.de/fhir/CodeSystem/backend-type" />
+	<!-- version managed by bpe -->
+	<version value="#{version}" />
+	<name value="NUM_Dashboard_Backend_Type" />
+	<title value="NUM Dashboard Backend Type" />
+	<!-- status managed by bpe -->
+	<status value="unknown" />
+	<experimental value="false" />
+	<!-- date managed by bpe -->
+	<date value="#{date}" />
+	<publisher value="Netzwerk-Universitaetsmedizin" />
+	<description value="CodeSystem with possible values for the backend types" />
+	<caseSensitive value="true" />
+	<hierarchyMeaning value="grouped-by" />
+	<versionNeeded value="false" />
+	<content value="complete" />
+	<concept>
+		<code value="PROD" />
+		<display value="Productive" />
+		<definition value="Send report to productive Dashboard-Backend" />
+	</concept>
+	<concept>
+		<code value="DEV" />
+		<display value="Development" />
+		<definition value="Send report to development Dashboard-Backend" />
+	</concept>
+	<concept>
+		<code value="TEST" />
+		<display value="Test" />
+		<definition value="Send report to test Dashboard-Backend" />
+	</concept>
+</CodeSystem>

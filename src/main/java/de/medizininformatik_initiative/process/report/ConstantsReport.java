@@ -93,4 +93,7 @@ public interface ConstantsReport
 
 	String CODESYSTEM_VOTING_PROCESS = "http://ukbonn.de/fhir/CodeSystem/approve-dashboard-binary";
 	String CODESYSTEM_VOTING_PROCESS_VALUE_BINARY_QUESTION = "binary-question";
+
+	String CODESYSTEM_BACKEND_TYPE = "http://netzwerk-universitaetsmedizin.de/fhir/CodeSystem/backend-type";
+	String CODESYSTEM_BACKEND_TYPE_VALUE_TYPE = "num-backend-type";
 }

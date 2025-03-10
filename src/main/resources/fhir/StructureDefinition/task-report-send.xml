@@ -91,6 +91,23 @@
       <path value="Task.input.value[x].identifier" />
       <max value="0" />
     </element>
+
+    <element id="Task.input:backendtype">
+      <path value="Task.input" />
+      <sliceName value="backendtype" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Task.input:backendtype.type.coding.system">
+      <path value="Task.input.type.coding.system" />
+      <min value="1" />
+      <fixedCode value="http://netzwerk-universitaetsmedizin.de/fhir/CodeSystem/backend-type" />
+    </element>
+    <element id="Task.input:backendtype.type.coding.code">
+      <path value="Task.input.type.coding.code" />
+      <min value="1" />
+    </element>
+
     <element id="Task.output:report-status">
       <path value="Task.output"/>
       <sliceName value="report-status"/>

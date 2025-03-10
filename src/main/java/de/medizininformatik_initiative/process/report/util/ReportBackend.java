@@ -34,6 +34,11 @@ public class ReportBackend
 		this.dashboardBackend = dashboardBackend;
 	}
 
+	public String getType()
+	{
+		return dashboardBackend;
+	}
+
 	public String getActiveURL()
 	{
 		if (dashboardBackend.equals("PROD"))
@@ -41,6 +46,18 @@ public class ReportBackend
 		else if (dashboardBackend.equals("DEV"))
 			return dashboardBackendUrlDevelopment;
 		else if (dashboardBackend.equals("TEST"))
+			return dashboardBackendUrlTest;
+		else
+			return null;
+	}
+
+	public String getActiveURL(String type)
+	{
+		if (type.equals("PROD"))
+			return dashboardBackendUrlProduktiv;
+		else if (type.equals("DEV"))
+			return dashboardBackendUrlDevelopment;
+		else if (type.equals("TEST"))
 			return dashboardBackendUrlTest;
 		else
 			return null;
