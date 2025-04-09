@@ -39,18 +39,6 @@ public class ReportBackend
 		return dashboardBackend;
 	}
 
-	public String getActiveURL()
-	{
-		if (dashboardBackend.equals("PROD"))
-			return dashboardBackendUrlProduktiv;
-		else if (dashboardBackend.equals("DEV"))
-			return dashboardBackendUrlDevelopment;
-		else if (dashboardBackend.equals("TEST"))
-			return dashboardBackendUrlTest;
-		else
-			return null;
-	}
-
 	public String getActiveURL(String type)
 	{
 		if (type.equals("PROD"))

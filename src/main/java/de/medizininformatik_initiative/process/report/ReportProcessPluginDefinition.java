@@ -69,6 +69,7 @@ public class ReportProcessPluginDefinition implements ProcessPluginDefinition
 
 		var cReport = "fhir/CodeSystem/report.xml";
 		var cReportStatus = "fhir/CodeSystem/report-status.xml";
+		var cBackendType = "fhir/CodeSystem/backend-type.xml";
 
 		var eReportStatusError = "fhir/StructureDefinition/extension-report-status-error.xml";
 
@@ -85,15 +86,17 @@ public class ReportProcessPluginDefinition implements ProcessPluginDefinition
 		var vReport = "fhir/ValueSet/report.xml";
 		var vReportStatusReceive = "fhir/ValueSet/report-status-receive.xml";
 		var vReportStatusSend = "fhir/ValueSet/report-status-send.xml";
+		var vBackendType = "fhir/ValueSet/backend-type.xml";
 
 		var qApproveDashboardBinary = "fhir/Questionnaire/approve-dashboard-binary.xml";
 
 		return Map.of(ConstantsReport.PROCESS_NAME_FULL_REPORT_AUTOSTART,
 				List.of(aAutostart, cReport, sAutostartStart, sAutostartStop, tAutostartStart, tAutostartStop, vReport),
 				ConstantsReport.PROCESS_NAME_FULL_REPORT_RECEIVE,
-				List.of(aReceive, cReport, cReportStatus, eReportStatusError, sSend, vReport, vReportStatusReceive),
+				List.of(aReceive, cReport, cReportStatus, cBackendType, eReportStatusError, sSend, vReport,
+						vReportStatusReceive, vBackendType),
 				ConstantsReport.PROCESS_NAME_FULL_REPORT_SEND,
-				List.of(aSend, cReport, cReportStatus, eReportStatusError, sReceive, sSendStart, tSendStart, vReport,
-						vReportStatusSend, qApproveDashboardBinary));
+				List.of(aSend, cReport, cReportStatus, cBackendType, eReportStatusError, sReceive, sSendStart,
+						tSendStart, vReport, vReportStatusSend, vBackendType, qApproveDashboardBinary));
 	}
 }

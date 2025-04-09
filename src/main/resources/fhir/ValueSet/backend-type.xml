@@ -1,0 +1,27 @@
+<ValueSet xmlns="http://hl7.org/fhir">
+	<meta>
+		<tag>
+			<system value="http://dsf.dev/fhir/CodeSystem/read-access-tag" />
+			<code value="ALL" />
+		</tag>
+	</meta>
+	<url value="http://netzwerk-universitaetsmedizin.de/fhir/ValueSet/backend-type" />
+	<!-- version managed by bpe -->
+	<version value="#{version}" />
+	<name value="NUM_Dashboard_Report_Backend_Type" />
+	<title value="NUM Dashboard Report Backend Type" />
+	<!-- status managed by bpe -->
+	<status value="unknown" />
+	<experimental value="false" />
+	<!-- date managed by bpe -->
+	<date value="#{date}" />
+	<publisher value="Netzwerk-Universitaetsmedizin" />
+	<description value="ValueSet with standard values for the backendtypes" />
+	<immutable value="true" />
+	<compose>
+		<include>
+			<system value="http://netzwerk-universitaetsmedizin.de/fhir/CodeSystem/backend-type" />
+			<version value="#{version}" />
+		</include>
+	</compose>
+</ValueSet> 

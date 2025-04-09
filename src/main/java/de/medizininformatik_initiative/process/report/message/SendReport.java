@@ -62,7 +62,7 @@ public class SendReport extends AbstractTaskMessageSend
 				.getString(ConstantsReport.BPMN_EXECUTION_VARIABLE_DASHBOARD_REPORT_DDP_JSON_RESPONSE_REFERENCE);
 		// String ddpBackendType = variables
 		// .getString(ConstantsReport.CODESYSTEM_BACKEND_TYPE_VALUE_TYPE);
-		String ddpBackendType = variables.getString(reportBackend.getType());
+		String ddpBackendType = reportBackend.getType();
 		// update this binary resource if approval was required to allow access
 		if (variables.getBoolean(ConstantsReport.BPMN_EXECUTION_VARIABLE_DASHBOARD_REPORT_DDP_APPROVAL))
 		{
@@ -82,8 +82,9 @@ public class SendReport extends AbstractTaskMessageSend
 		parameterComponent.setValue(new Reference(ddpBinaryUrl).setType(ResourceType.Binary.name()));
 
 		Task.ParameterComponent parameterComponent2 = new Task.ParameterComponent();
-		parameterComponent2.getType().addCoding().setSystem(ConstantsReport.CODESYSTEM_BACKEND_TYPE)
-				.setCode(reportBackend.getActiveURL(ddpBackendType));
+		parameterComponent2.getType().addCoding().setSystem(ConstantsReport.CODESYSTEM_REPORT)
+				.setCode(ConstantsReport.CODESYSTEM_REPORT_BACKEND_TYPE_VALUE);
+		parameterComponent2.setValue(new Coding(ConstantsReport.CODESYSTEM_REPORT_BACKEND_TYPE, ddpBackendType, null));
 
 		return Stream.of(parameterComponent, parameterComponent2);
 	}
@@ -91,6 +92,7 @@ public class SendReport extends AbstractTaskMessageSend
 	@Override
 	protected IdType doSend(FhirWebserviceClient client, Task task)
 	{
+		// System.out.println(api.getFhirContext().newJsonParser().encodeResourceToString(task));
 		return client.withMinimalReturn()
 				.withRetry(ConstantsBase.DSF_CLIENT_RETRY_6_TIMES, ConstantsBase.DSF_CLIENT_RETRY_INTERVAL_5MIN)
 				.create(task);

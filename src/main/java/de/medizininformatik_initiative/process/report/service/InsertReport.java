@@ -23,6 +23,7 @@ import java.util.Objects;
 import org.camunda.bpm.engine.delegate.BpmnError;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.hl7.fhir.r4.model.Binary;
+import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,6 +69,10 @@ public class InsertReport extends AbstractServiceDelegate
 		Task task = variables.getStartTask();
 		String sendingOrganization = task.getRequester().getIdentifier().getValue();
 
+		// System.out.println(api.getFhirContext().newJsonParser().encodeResourceToString(task));
+		String backendType = api.getTaskHelper().getFirstInputParameterValue(task, ConstantsReport.CODESYSTEM_REPORT,
+				ConstantsReport.CODESYSTEM_REPORT_BACKEND_TYPE_VALUE, Coding.class).get().getCode();
+		// System.out.println("type: " + backendType);
 		Binary report = variables.getResource(ConstantsReport.BPMN_EXECUTION_VARIABLE_DASHBOARD_REPORT_DDP_BINARY);
 
 		// api.getReadAccessHelper().addLocal(report);
@@ -76,7 +81,8 @@ public class InsertReport extends AbstractServiceDelegate
 		try
 		{
 			String organization = sendingOrganization.replaceAll("\\.", "");
-			sendDataToDashboard(report, organization);
+			String response = sendDataToDashboard(report, organization, backendType);
+			System.out.println("Insertresponse: " + response);
 
 			task.addOutput(statusGenerator
 					.createReportStatusOutput(ConstantsReport.CODESYSTEM_REPORT_STATUS_VALUE_RECEIVE_OK));
@@ -99,7 +105,7 @@ public class InsertReport extends AbstractServiceDelegate
 		}
 	}
 
-	protected String sendDataToDashboard(Binary report, String organization)
+	protected String sendDataToDashboard(Binary report, String organization, String backendType)
 	{
 		byte[] decodedData = report.getData();
 		String decodedString = new String(decodedData);
@@ -118,7 +124,7 @@ public class InsertReport extends AbstractServiceDelegate
 		HttpEntity<String> entity = new HttpEntity<>(decodedString, headers);
 		// Send the request using exchange to include headers and request body, and get the response
 		ResponseEntity<String> response = restTemplate.exchange(
-				reportBackend.getActiveURL() + "/internal/" + organization + "/put", HttpMethod.PUT, entity,
+				reportBackend.getActiveURL(backendType) + "/internal/" + organization + "/put", HttpMethod.PUT, entity,
 				String.class);
 
 		return response.getBody();

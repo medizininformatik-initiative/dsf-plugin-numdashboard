@@ -27,8 +27,8 @@
     </element>
     <element id="Task.input">
       <path value="Task.input" />
-      <min value="3" />
-      <max value="3" />
+      <min value="4" />
+      <max value="4" />
     </element>
     <element id="Task.input:message-name">
       <path value="Task.input" />
@@ -91,21 +91,52 @@
       <path value="Task.input.value[x].identifier" />
       <max value="0" />
     </element>
-
-    <element id="Task.input:backendtype">
+    <element id="Task.input:backend-type">
       <path value="Task.input" />
-      <sliceName value="backendtype" />
+      <sliceName value="backend-type" />
       <min value="1" />
       <max value="1" />
     </element>
-    <element id="Task.input:backendtype.type.coding.system">
+    <element id="Task.input:backend-type.type">
+      <path value="Task.input.type"/>
+      <binding>
+        <strength value="required"/>
+        <valueSet value="http://netzwerk-universitaetsmedizin.de/fhir/ValueSet/report|#{version}"/>
+      </binding>
+    </element>
+    <element id="Task.input:backend-type.type.coding">
+      <path value="Task.input.type.coding"/>
+      <min value="1"/>
+      <max value="1"/>
+    </element>
+    <element id="Task.input:backend-type.type.coding.system">
       <path value="Task.input.type.coding.system" />
       <min value="1" />
-      <fixedCode value="http://netzwerk-universitaetsmedizin.de/fhir/CodeSystem/backend-type" />
+      <fixedUri value="http://netzwerk-universitaetsmedizin.de/fhir/CodeSystem/report" />
     </element>
-    <element id="Task.input:backendtype.type.coding.code">
+    <element id="Task.input:backend-type.type.coding.code">
       <path value="Task.input.type.coding.code" />
       <min value="1" />
+      <fixedCode value="backend-type"/>
+    </element>
+    <element id="Task.input:backend-type.value[x]">
+      <path value="Task.input.value[x]"/>
+      <type>
+        <code value="Coding"/>
+      </type>
+    </element>
+    <element id="Task.input:backend-type.value[x].system">
+      <path value="Task.input.value[x].system"/>
+      <min value="1"/>
+      <fixedUri value="http://netzwerk-universitaetsmedizin.de/fhir/CodeSystem/backend-type"/>
+    </element>
+    <element id="Task.input:backend-type.value[x].code">
+      <path value="Task.input.value[x].code"/>
+      <min value="1"/>
+      <binding>
+        <strength value="required"/>
+        <valueSet value="http://netzwerk-universitaetsmedizin.de/fhir/ValueSet/backend-type|#{version}"/>
+      </binding>
     </element>
 
     <element id="Task.output:report-status">
