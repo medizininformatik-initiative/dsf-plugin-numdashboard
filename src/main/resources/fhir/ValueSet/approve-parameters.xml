@@ -5,7 +5,7 @@
             <code value="ALL" />
         </tag>
     </meta>
-    <url value="http://ukbonn.de/fhir/ValueSet/approve-parameters"/>
+    <url value="http://netzwerk-universitaetsmedizin.de/fhir/ValueSet/approve-parameters"/>
     <!-- version managed by bpe -->
     <version value="#{version}" />
     <name value="Approve Parameters"/>
@@ -20,7 +20,7 @@
     <immutable value="true"/>
     <compose>
         <include>
-            <system value="http://dsf.dev/fhir/CodeSystem/approve-process"/>
+            <system value="http://netzwerk-universitaetsmedizin.de/fhir/CodeSystem/approve-process"/>
             <concept>
                 <code value="binary-question" />
             </concept>
