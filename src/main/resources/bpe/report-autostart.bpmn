@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1bd6yss" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.28.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1bd6yss" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.20.0">
   <bpmn:process id="netzwerk-universitaetsmedizinde_reportAutostart" isExecutable="true" camunda:versionTag="#{version}">
     <bpmn:exclusiveGateway id="Gateway_1xqxerc">
       <bpmn:incoming>Flow_1ltiore</bpmn:incoming>
@@ -166,18 +166,6 @@
           <dc:Bounds x="744" y="355" width="53" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1x1i42n_di" bpmnElement="reportAutostartStopMessageStartEvent">
-        <dc:Bounds x="162" y="312" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="153" y="355" width="53" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_06n50ak_di" bpmnElement="signalSendStopReportAutostart2">
-        <dc:Bounds x="282" y="312" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="260" y="355" width="80" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0poficl_di" bpmnElement="Gateway_0poficl" isMarkerVisible="true">
         <dc:Bounds x="555" y="92" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -197,6 +185,18 @@
         <dc:Bounds x="562" y="312" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="546" y="355" width="68" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_06n50ak_di" bpmnElement="signalSendStopReportAutostart2">
+        <dc:Bounds x="281" y="211" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="259" y="254" width="81" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1x1i42n_di" bpmnElement="reportAutostartStopMessageStartEvent">
+        <dc:Bounds x="172" y="211" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="163" y="254" width="54" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_09o8bb5_di" bpmnElement="Flow_09o8bb5">
@@ -222,10 +222,6 @@
       <bpmndi:BPMNEdge id="Flow_1lwuxwz_di" bpmnElement="Flow_1lwuxwz">
         <di:waypoint x="922" y="330" />
         <di:waypoint x="788" y="330" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_05xmyck_di" bpmnElement="Flow_05xmyck">
-        <di:waypoint x="198" y="330" />
-        <di:waypoint x="282" y="330" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0taij7y_di" bpmnElement="Flow_0taij7y">
         <di:waypoint x="490" y="117" />
@@ -269,6 +265,10 @@
       <bpmndi:BPMNEdge id="Flow_1g7lqdi_di" bpmnElement="Flow_1g7lqdi">
         <di:waypoint x="605" y="117" />
         <di:waypoint x="665" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05xmyck_di" bpmnElement="Flow_05xmyck">
+        <di:waypoint x="208" y="229" />
+        <di:waypoint x="281" y="229" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
